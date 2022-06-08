@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import sendMessage from "./src/send-message.js";
 
 dotenv.config();
 
@@ -32,7 +33,8 @@ app.post("/", async (res) => {
         const needToSummon = isPushEvent && hasKeyword && isManager;
 
         if (needToSummon) {
-            console.log("Add something if you detect the keyword in teamchat");
+            const msg = "Test Message!";
+            sendMessage(auth, msg, groupId, botName);
         }
     } catch (err) {
         console.log(err);
