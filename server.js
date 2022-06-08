@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import sendMessage from "./src/send-message.js";
+import randomSelect from "./src/random-select.js";
+
 
 dotenv.config();
 
@@ -35,6 +37,7 @@ app.post("/", async (res) => {
         if (needToSummon) {
             const msg = "Test Message!";
             sendMessage(auth, msg, groupId, botName);
+            randomSelect(auth, groupId, botName);
         }
     } catch (err) {
         console.log(err);
