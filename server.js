@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import sendMessage from "./src/send-message.js";
 import randomSelect from "./src/random-select.js";
+import celebrate from "./src/celebrate.js";
 
 
 dotenv.config();
@@ -34,10 +35,12 @@ app.post("/", async (res) => {
 
         const needToSummon = isPushEvent && hasKeyword && isManager;
 
+
         if (needToSummon) {
             const msg = "Test Message!";
-            sendMessage(auth, msg, groupId, botName);
-            randomSelect(auth, groupId, botName);
+            // sendMessage(auth, msg, groupId, botName);
+            const selectedManager = await randomSelect(auth, groupId, botName);
+            celebrate(auth, selectedManager, groupId, botName);
         }
     } catch (err) {
         console.log(err);
