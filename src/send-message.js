@@ -1,4 +1,6 @@
 import fetch from "node-fetch";
+import dotenv from "dotenv";
+dotenv.config();
 
 async function sendMessage(auth, msg, groupId, botName) {
     try {
@@ -9,6 +11,12 @@ async function sendMessage(auth, msg, groupId, botName) {
                     type: "text",
                     value: msg,
                 },
+            ],
+            reactions: [
+                {
+                    emojiName: "💥",
+                    personKeys: ["string"],
+                }
             ],
             options: ["actAsManager"],
         };

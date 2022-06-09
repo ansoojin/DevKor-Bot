@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import sendMessage from "./src/send-message.js";
 import randomSelect from "./src/random-select.js";
 import celebrate from "./src/celebrate.js";
-
+import checkText from "./src/check-text.js";
 
 dotenv.config();
 
@@ -33,14 +33,38 @@ app.post("/", async (res) => {
         const hasKeyword = plainText.includes(keyword);
         const isManager = personType === "manager";
 
-        const needToSummon = isPushEvent && hasKeyword && isManager;
+        let [n, msg] = checkText(plainText, keyword);
 
+        let hasNumber = false;
+        if (n) {
+            hasNumber = true;
+        }
+        if (msg) {
+            sendMessage(auth, msg, groupId, botName);
+        }
+
+        const needToSummon = isPushEvent && hasKeyword && isManager;
+        let selectedManager = ""
+        let isFull = true;
 
         if (needToSummon) {
-            const msg = "Test Message!";
-            // sendMessage(auth, msg, groupId, botName);
-            const selectedManager = await randomSelect(auth, groupId, botName);
-            celebrate(auth, selectedManager, groupId, botName);
+            if (Number.isInteger(n)) {
+                for (let i = 0; i < n; i++) {
+                    selectedManager = await randomSelect(auth, groupId, botName);
+                    celebrate(selectedManager, groupId, botName, isFull);
+                }
+            } else {
+                n = Math.floor(n);
+                for (let i = 0; i < n; i++) {
+                    selectedManager = await randomSelect(auth, groupId, botName);
+                    celebrate(selectedManager, groupId, botName, isFull);
+                }
+                msg = "아 또 소수점..😤";
+                isFull = false;
+                sendMessage(msg, groupId, botName);
+                selectedManager = await randomSelect(auth, groupId, botName);
+                celebrate(auth, selectedManager, groupId, botName, isFull);
+            }
         }
     } catch (err) {
         console.log(err);
