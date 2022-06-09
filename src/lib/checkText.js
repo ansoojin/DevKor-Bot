@@ -24,6 +24,7 @@ const checkText = (plainText, keyword) => {
     let x = textList[i];
 
     if (x.includes(keyword)) {
+      console.log(x);
       const text = x.split(keyword)[0];
       const { isInt, num } = checkNum(text);
 
