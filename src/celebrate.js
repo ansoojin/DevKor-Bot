@@ -2,7 +2,7 @@ import fetch from "node-fetch";
 import dotenv from "dotenv";
 dotenv.config();
 
-async function celebrate(auth, selectedManager, groupId, botName, isFull) {
+async function celebrate(auth, selectedManager, groupId, botName, isFull = true) {
     try {
         let msg = "";
         if (!isFull) {

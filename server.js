@@ -43,7 +43,7 @@ app.post("/", async (res) => {
             sendMessage(auth, msg, groupId, botName);
         }
 
-        const needToSummon = isPushEvent && hasKeyword && isManager;
+        const needToSummon = isPushEvent && hasKeyword && isManager && hasNumber;
         let selectedManager = ""
         let isFull = true;
 
@@ -51,17 +51,17 @@ app.post("/", async (res) => {
             if (Number.isInteger(n)) {
                 for (let i = 0; i < n; i++) {
                     selectedManager = await randomSelect(auth, groupId, botName);
-                    await celebrate(selectedManager, groupId, botName, isFull);
+                    celebrate(auth, selectedManager, groupId, botName, isFull);
                 }
             } else {
                 n = Math.floor(n);
+                msg = "아 또 소수점..😤";
+                sendMessage(auth, msg, groupId, botName);
                 for (let i = 0; i < n; i++) {
                     selectedManager = await randomSelect(auth, groupId, botName);
-                    await celebrate(selectedManager, groupId, botName, isFull);
+                    celebrate(auth, selectedManager, groupId, botName, isFull);
                 }
-                msg = "아 또 소수점..😤";
                 isFull = false;
-                sendMessage(auth, msg, groupId, botName);
                 selectedManager = await randomSelect(auth, groupId, botName);
                 celebrate(auth, selectedManager, groupId, botName, isFull);
             }
