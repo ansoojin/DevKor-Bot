@@ -61,9 +61,9 @@ app.post("/", async (res) => {
                 }
                 msg = "아 또 소수점..😤";
                 isFull = false;
-                await sendMessage(msg, groupId, botName);
+                sendMessage(auth, msg, groupId, botName);
                 selectedManager = await randomSelect(auth, groupId, botName);
-                await celebrate(auth, selectedManager, groupId, botName, isFull);
+                celebrate(auth, selectedManager, groupId, botName, isFull);
             }
         }
     } catch (err) {

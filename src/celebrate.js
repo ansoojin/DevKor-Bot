@@ -4,7 +4,7 @@ dotenv.config();
 
 async function celebrate(auth, selectedManager, groupId, botName, isFull) {
     try {
-        let msg = "🎉축하드립니다🎉 " + selectedManager + " 님이 당첨되었습니다!";
+        let msg = "";
         if (!isFull) {
             let halfName = "";
             for (let i = 0; i < selectedManager.length; i++) {
@@ -15,6 +15,8 @@ async function celebrate(auth, selectedManager, groupId, botName, isFull) {
                 }
             }
             msg = "🎉축하드립니다🎉 " + halfName + " 님이 당첨되었습니다!";
+        } else {
+            msg = "🎉축하드립니다🎉 " + selectedManager + " 님이 당첨되었습니다!";
         }
         const url = "https://api.channel.io/open/v5/groups/" + String(groupId) + "/messages?botName=" + botName;
         const body = {
