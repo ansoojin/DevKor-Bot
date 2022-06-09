@@ -51,19 +51,19 @@ app.post("/", async (res) => {
             if (Number.isInteger(n)) {
                 for (let i = 0; i < n; i++) {
                     selectedManager = await randomSelect(auth, groupId, botName);
-                    celebrate(selectedManager, groupId, botName, isFull);
+                    await celebrate(selectedManager, groupId, botName, isFull);
                 }
             } else {
                 n = Math.floor(n);
                 for (let i = 0; i < n; i++) {
                     selectedManager = await randomSelect(auth, groupId, botName);
-                    celebrate(selectedManager, groupId, botName, isFull);
+                    await celebrate(selectedManager, groupId, botName, isFull);
                 }
                 msg = "아 또 소수점..😤";
                 isFull = false;
-                sendMessage(msg, groupId, botName);
+                await sendMessage(msg, groupId, botName);
                 selectedManager = await randomSelect(auth, groupId, botName);
-                celebrate(auth, selectedManager, groupId, botName, isFull);
+                await celebrate(auth, selectedManager, groupId, botName, isFull);
             }
         }
     } catch (err) {
