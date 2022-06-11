@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { summon } from './src/summon.js';
 import { sendMessage } from "./src/lib/sendMessage.js";
 import { sender } from "./src/constants/sender.js";
+import { stop } from "./src/lib/stop.js";
 
 dotenv.config();
 const port = process.env.PORT || 8080;
@@ -59,6 +60,7 @@ app.post('/stop', async (res) => {
         options: ['actAsManager'],
       };
       sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
+      stop();
     }
   } catch (err) {
     console.log(err);
