@@ -1,7 +1,7 @@
-import { sender } from './constants/sender.js';
-import { sendMessage } from './lib/sendMessage.js';
+import { sender } from '../../constants/sender.js';
+import { sendMessage } from '../../lib/sendMessage.js';
 import { getMembers, selectMembers } from '../../lib/selectRandomMem.js';
-import { checkText } from './lib/checkText.js';
+import { checkText } from '../../lib/checkText.js';
 
 const celebrate = (msg, groupId, botName) => {
   const body = {

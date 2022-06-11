@@ -1,6 +1,6 @@
 import express from 'express';
-import { sendMessage } from './src/lib/sendMessage.js';
-import { sender } from './src/constants/sender.js';
+import { sendMessage } from '../../lib/sendMessage.js';
+import { sender } from '../../constants/sender.js';
 import { stop } from './stop.js';
 
 const router = express.Router();
@@ -39,4 +39,4 @@ router.post('/stop', async (res) => {
   }
 });
 
-module.exports = router;
+export default router;

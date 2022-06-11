@@ -1,6 +1,6 @@
-import { sendMessage } from './lib/sendMessage.js';
-import { sender } from './constants/sender.js';
-import { getRandomNum } from './lib/getRandomNum.js';
+import { sendMessage } from './sendMessage.js';
+import { sender } from '../constants/sender.js';
+import { getRandomNum } from './getRandomNum.js';
 
 export const getMembers = async (groupId) => {
   const members = [];
