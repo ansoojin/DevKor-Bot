@@ -4,7 +4,7 @@ import { sender } from './constants/sender.js';
 const getMembers = async (groupId) => {
   let members = [];
 
-  const response = sendMessage(sender.GROUP, String(groupId), 'sessions', undefined, undefined, 'get');
+  const response = sendMessage(sender.GROUP, groupId, 'sessions', undefined, undefined, 'get');
   const data = response.json();
 
   await Promise.all(
@@ -27,7 +27,7 @@ const selectMember = (memberList) => {
 };
 
 const getMemberName = async (managerId) => {
-  const response = sendMessage(sender.MANAGER, String(managerId), '', undefined, undefined, 'get');
+  const response = sendMessage(sender.MANAGER, managerId, '', undefined, undefined, 'get');
   const data = await response.json();
   return data['manager']['name'];
 };

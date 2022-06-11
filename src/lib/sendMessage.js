@@ -5,7 +5,7 @@ import { send } from "./fetch.js";
 
 export const sendMessage = (sender, senderId, additionalPath, searchParams, body, method) => {
   const urlWithSender = makeSenderUrl(makeUrl(BASE_URL, APP_VERSION), sender);
-  const urlWithSenderId = senderId ? `${urlWithSender}/${senderId}` : urlWithSender;
+  const urlWithSenderId = senderId ? `${urlWithSender}/${String(senderId)}` : urlWithSender;
   const urlWithPath = additionalPath ? `${urlWithSenderId}/${additionalPath}` : urlWithSenderId;
   const url = makeSearchParamsUrl(urlWithPath, searchParams);
 

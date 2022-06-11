@@ -27,7 +27,7 @@ const celebrate = async (selectedManager, groupId, botName, isFull = true) => {
     options: ['actAsManager'],
   };
 
-  sendMessage(sender.GROUP, String(groupId), 'messages', { botName: botName }, body, 'post');
+  sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
 };
 
 export default celebrate;
