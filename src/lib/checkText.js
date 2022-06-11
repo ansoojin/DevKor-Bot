@@ -1,15 +1,21 @@
 const checkNum = (string) => {
-  const num = Number(string);
-  if (!isNaN(num)) {
-    const isInt = num % 1 === 0 ? true : false;
+  if (string) {
+    const num = Number(string);
+    if (!isNaN(num)) {
+      const isInt = num % 1 === 0 ? true : false;
+      return {
+        isInt: isInt,
+        num: num,
+      };
+    }
+
     return {
-      isInt: isInt,
-      num: num,
+      isInt: false,
+      num: undefined,
     };
   }
-
   return {
-    isInt: false,
+    isInt: undefined,
     num: undefined,
   };
 };
