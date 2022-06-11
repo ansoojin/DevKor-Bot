@@ -4,7 +4,7 @@ import { select } from './select.js';
 const router = express.Router();
 const botName = 'DevKor';
 
-router.post('/select', async (res) => {
+router.post('/', async (res) => {
   try {
     const { body } = res;
     const { event, entity } = body;

@@ -6,7 +6,7 @@ import { stop } from './stop.js';
 const router = express.Router();
 const botName = 'DevKor';
 
-router.post('/stop', async (res) => {
+router.post('/', async (res) => {
   try {
     const { body } = res;
     const { event, entity } = body;
