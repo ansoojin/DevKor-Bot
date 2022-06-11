@@ -7,8 +7,8 @@ export const makeSenderUrl = (url, sender) => {
 };
 
 export const makeSearchParamsUrl = (url, searchParams) => {
-  if (searchParams.constructor !== Object) throw new Error('searchParams should be object type!');
   if (searchParams == undefined) return url;
+  if (searchParams.constructor !== Object) throw new Error('searchParams should be object type!');
 
   const keys = Object.keys(searchParams);
   let urlWithSearchParams = `${url}?${String(keys[0])}=${String(searchParams[keys[0]])}`;
