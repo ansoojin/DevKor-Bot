@@ -68,8 +68,9 @@ export const summon = async (plainText, keyword, groupId, botName) => {
       const managers = await selectMembers(members, 1);
       const name = managers[0].name;
 
+      let halfName = '';
+
       if (!isFull) {
-        let halfName = '';
         for (let i = 0; i < name.length; i++) {
           if (i % 2 == 0) {
             halfName += name[i];
