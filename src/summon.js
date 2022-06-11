@@ -54,7 +54,7 @@ export const summon = async (plainText, keyword, groupId, botName) => {
     let msg = '';
     const MAX_MSG_NUM = 15;
 
-    if (managers > MAX_MSG_NUM) {
+    if (managers.length > MAX_MSG_NUM) {
       managers.map((manager) => {
         personalAnnounce(manager.id, botName);
         msg += '\n' + '🎉축하드립니다🎉 ' + manager.name + ' 님이 당첨되었습니다!';
