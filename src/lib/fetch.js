@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { auth } from '../config/auth.js';
 
-export const send = async (url, body, method) => {
+export const send = (url, body, method) => {
   if (method !== 'post' && method !== 'get') return console.log('wrong http method!');
 
   return fetch(url, {
