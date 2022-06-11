@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const express = require("express");
+import express from "express";
+
 const app = express();
 const shell = require("shelljs");
 const port = process.env.PORT;
