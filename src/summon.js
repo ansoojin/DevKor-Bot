@@ -1,4 +1,4 @@
-import { sender } from "./constants/sender";
+import { sender } from "./constants/sender.js";
 import { sendMessage } from "./lib/sendMessage.js";
 import randomSelect from "./randomSelect.js";
 import celebrate from "./celebrate.js";

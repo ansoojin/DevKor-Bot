@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { summon } from './src/summon';
+import { summon } from './src/summon.js';
 
 dotenv.config();
 const port = process.env.PORT || 8080;

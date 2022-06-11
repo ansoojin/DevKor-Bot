@@ -1,5 +1,5 @@
 import { sendMessage } from './lib/sendMessage.js';
-import { sender } from './constants/sender';
+import { sender } from './constants/sender.js';
 
 const celebrate = async (selectedManager, groupId, botName, isFull = true) => {
   let msg = '';
