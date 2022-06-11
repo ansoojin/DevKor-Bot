@@ -1,57 +1,30 @@
 import { sendMessage } from './lib/sendMessage.js';
 import { sender } from './constants/sender.js';
+import { getRandomNum } from './lib/getRandomNum.js';
 
-const getMembers = async (groupId) => {
-  let members = [];
+export const getMembers = async (groupId) => {
+  const members = [];
 
-  const response = sendMessage(sender.GROUP, groupId, 'sessions', undefined, undefined, 'get');
-  const data = response.json();
+  const response = await sendMessage(sender.GROUP, groupId, 'sessions', undefined, undefined, 'get');
+  const data = await response.json();
 
-  await Promise.all(
-    data['sessions'].map(async (iter) => {
-      members.push(iter['personId']);
-    }),
-  );
+  data['sessions'].map((iter) => {
+    members.push(iter['personId']);
+  });
 
   return members;
 };
 
-const selectMember = (memberList) => {
-  let pickedIdx = 0;
-  let managerId = '';
+export const selectMembers = async (members, n) => {
+  const managers = [];
+  const selectedIdx = getRandomNum(members.length, n);
 
-  pickedIdx = Math.floor(Math.random() * memberList.length);
-  managerId = memberList[pickedIdx];
+  selectedIdx.forEach(async (idx) => {
+    const response = await sendMessage(sender.MANAGER, members[idx], '', undefined, undefined, 'get');
+    const data = await response.json();
 
-  return managerId;
+    managers.push({ id: members[idx], name: data['manager']['name'] });
+  });
+
+  return managers;
 };
-
-const getMemberName = async (managerId) => {
-  const response = sendMessage(sender.MANAGER, managerId, '', undefined, undefined, 'get');
-  const data = await response.json();
-  return data['manager']['name'];
-};
-
-const personalAnnounce = async (managerId, botName) => {
-  const body = {
-    blocks: [
-      {
-        type: 'text',
-        value: '🎉당첨🎉 축하드립니다!',
-      },
-    ],
-    options: ['actAsManager'],
-  };
-
-  sendMessage(sender.ANNOUNCEMENTS, undefined, 'announce', { botName: botName, managerIds: String(managerId) }, body, 'post');
-};
-
-const randomSelect = async (groupId, botName) => {
-  const memberList = await getMembers(groupId);
-  const managerId = await selectMember(memberList);
-  const selectedManager = await getMemberName(managerId);
-  await personalAnnounce(managerId, botName);
-  return selectedManager;
-};
-
-export default randomSelect;

@@ -1,22 +1,7 @@
 import { sendMessage } from './lib/sendMessage.js';
 import { sender } from './constants/sender.js';
 
-const celebrate = async (selectedManager, groupId, botName, isFull = true) => {
-  let msg = '';
-  if (!isFull) {
-    let halfName = '';
-    for (let i = 0; i < selectedManager.length; i++) {
-      if (i % 2 == 0) {
-        halfName += selectedManager[i];
-      } else {
-        halfName += '*';
-      }
-    }
-    msg = '🎉축하드립니다🎉 ' + halfName + ' 님이 당첨되었습니다!';
-  } else {
-    msg = '🎉축하드립니다🎉 ' + selectedManager + ' 님이 당첨되었습니다!';
-  }
-
+export const celebrate = (msg, groupId, botName) => {
   const body = {
     blocks: [
       {
@@ -30,4 +15,16 @@ const celebrate = async (selectedManager, groupId, botName, isFull = true) => {
   sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
 };
 
-export default celebrate;
+export const personalAnnounce = (managerId, botName) => {
+  const body = {
+    blocks: [
+      {
+        type: 'text',
+        value: '🎉당첨🎉 축하드립니다!',
+      },
+    ],
+    options: ['actAsManager'],
+  };
+
+  sendMessage(sender.ANNOUNCEMENTS, undefined, 'announce', { botName: botName, managerIds: managerId }, body, 'post');
+};
