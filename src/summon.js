@@ -41,10 +41,15 @@ export const summon = async (plainText, keyword, groupId, botName) => {
       return sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
     }
 
-    const num = isInt ? n : Math.floor(n);
+    const num = isInt ? n : Math.ceil(n);
 
     // unique random selection
     const managers = await selectMembers(members, num);
+
+    let lastManager = undefined;
+    if (!isInt) {
+      lastManager = managers.pop();
+    }
 
     let msg = '';
     const MAX_MSG_NUM = 15;
@@ -63,10 +68,9 @@ export const summon = async (plainText, keyword, groupId, botName) => {
       });
     }
 
-    if (!isInt) {
+    if (lastManager) {
       isFull = false;
-      const managers = await selectMembers(members, 1);
-      const name = managers[0].name;
+      const name = lastManager.name;
 
       let halfName = '';
 
