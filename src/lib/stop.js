@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-import express from "express";
 import shell from "shelljs";
-
-const app = express();
-const port = process.env.PORT;
 
 export const stop = () => {
     shell.cd('~');
