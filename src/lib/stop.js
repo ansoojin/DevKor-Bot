@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import express from "express";
+import shell from "shelljs";
 
 const app = express();
-const shell = require("shelljs");
 const port = process.env.PORT;
 
 export const stop = () => {
