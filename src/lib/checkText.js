@@ -28,7 +28,9 @@ export const checkText = (plainText, keyword) => {
       const text = x.split(keyword)[0];
       const { isInt, num } = checkNum(text);
 
-      if (num < 0) {
+      if (num === 0) {
+        msg = '🤥 0명을 왜 뽑아?';
+      } else if (num < 0) {
         msg = '😩 에휴.. 음수를 입력하는 바보가 어딨어. 내가 자연수로 바꿔줄게^^ 다음부턴 잘해.';
         n = -Math.floor(num);
       } else if (!isInt) {
