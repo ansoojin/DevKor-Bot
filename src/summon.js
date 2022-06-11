@@ -26,7 +26,7 @@ export const summon = (plainText, keyword, groupId, botName) => {
     const [n, isInt, msg] = checkText(plainText, keyword);
 
     if (msg) {
-      sendMessage(sender.GROUP, groupId, "message", {botName: botName},commonBody(msg), "post");
+      sendMessage(sender.GROUP, groupId, "messages", {botName: botName},commonBody(msg), "post");
     }
     
     if (n) {
