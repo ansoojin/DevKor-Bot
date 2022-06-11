@@ -1,4 +1,3 @@
-import { auth } from "../config/auth.js";
 import { BASE_URL, APP_VERSION } from "../constants/url.js";
 import { makeUrl, makeSenderUrl, makeSearchParamsUrl } from "./utils.js";
 import { send } from "./fetch.js";
@@ -10,7 +9,7 @@ export const sendMessage = (sender, senderId, additionalPath, searchParams, body
   const url = makeSearchParamsUrl(urlWithPath, searchParams);
 
   try {
-    const response = await send(auth, url, body, method);
+    const response = await send(url, body, method);
     console.log(response.json());
     return response;
   } catch (err) {
