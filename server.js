@@ -53,7 +53,7 @@ app.post('/stop', async (res) => {
         blocks: [
           {
             type: 'text',
-            value: msg,
+            value: "Okay! I will stop it!",
           },
         ],
         options: ['actAsManager'],
