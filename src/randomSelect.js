@@ -19,12 +19,12 @@ export const selectMembers = async (members, n) => {
   const managers = [];
   const selectedIdx = getRandomNum(members.length, n);
 
-  selectedIdx.forEach(async (idx) => {
+  for (let idx of selectedIdx) {
     const response = await sendMessage(sender.MANAGER, members[idx], '', undefined, undefined, 'get');
     const data = await response.json();
 
     managers.push({ id: members[idx], name: data['manager']['name'] });
-  });
+  }
 
   return managers;
 };

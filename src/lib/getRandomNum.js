@@ -6,5 +6,5 @@ export const getRandomNum = (max, n) => {
     set.add(randomNum);
   }
 
-  return set;
+  return [...set];
 };
