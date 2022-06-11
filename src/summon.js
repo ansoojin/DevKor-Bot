@@ -33,7 +33,7 @@ export const summon = async (plainText, keyword, groupId, botName) => {
         blocks: [
           {
             type: 'text',
-            value: `🤢 MAX_NUM available is ${members.length}`,
+            value: `🤢 여기 ${members.length}명 밖에 없어. 안돼.`,
           },
         ],
         options: ['actAsManager'],
