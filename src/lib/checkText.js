@@ -14,7 +14,7 @@ const checkNum = (string) => {
   };
 };
 
-const checkText = (plainText, keyword) => {
+export const checkText = (plainText, keyword) => {
   const textList = plainText.split(' ');
   let n = undefined;
   let msg = undefined;
@@ -40,5 +40,3 @@ const checkText = (plainText, keyword) => {
     }
   }
 };
-
-export default checkText;
