@@ -27,7 +27,7 @@ export const checkText = (plainText, keyword) => {
     if (x.includes(keyword)) {
       console.log(x);
       const text = x.split(keyword)[0];
-      const { isInt, num } = checkNum(text);
+      let { isInt, num } = checkNum(text);
 
       if (num === 0) {
         msg = '🤥 0명을 왜 뽑아?';
