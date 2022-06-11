@@ -1,10 +1,37 @@
 import { sender } from './constants/sender.js';
 import { sendMessage } from './lib/sendMessage.js';
-import { getMembers, selectMembers } from './randomSelect.js';
-import { celebrate, personalAnnounce } from './celebrate.js';
+import { getMembers, selectMembers } from '../../lib/selectRandomMem.js';
 import { checkText } from './lib/checkText.js';
 
-export const summon = async (plainText, keyword, groupId, botName) => {
+const celebrate = (msg, groupId, botName) => {
+  const body = {
+    blocks: [
+      {
+        type: 'text',
+        value: msg,
+      },
+    ],
+    options: ['actAsManager'],
+  };
+
+  sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
+};
+
+const personalAnnounce = (managerId, botName) => {
+  const body = {
+    blocks: [
+      {
+        type: 'text',
+        value: '🎉당첨🎉 축하드립니다!',
+      },
+    ],
+    options: ['actAsManager'],
+  };
+
+  sendMessage(sender.ANNOUNCEMENTS, undefined, 'announce', { botName: botName, managerIds: managerId }, body, 'post');
+};
+
+export const select = async (plainText, keyword, groupId, botName) => {
   const [n, isInt, msg] = checkText(plainText, keyword);
 
   // negative number or real numbers
