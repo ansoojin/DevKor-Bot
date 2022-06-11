@@ -60,7 +60,9 @@ app.post('/stop', async (res) => {
         options: ['actAsManager'],
       };
       sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
-      stop();
+      setTimeout(() => {
+        stop()
+      }, 5000);
     }
   } catch (err) {
     console.log(err);
