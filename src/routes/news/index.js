@@ -42,9 +42,6 @@ router.post('/', async (res) => {
               ],
             options: ['actAsManager'],
           };
-          console.log(newsUrl);
-          console.log(newsTitle);
-        
           sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
     }
   } catch (err) {
