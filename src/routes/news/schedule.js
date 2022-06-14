@@ -7,10 +7,10 @@ const rule = new schedule.RecurrenceRule();
 
 rule.dayOfWeek = [new schedule.Range(1, 6)];
 rule.hour = 4;
-rule.minute = 30;
+rule.minute = 35;
 rule.tz = 'Asia/Seoul'
 
-schedule.scheduleJob(rule, async () => {
+export const newsScheduler = schedule.scheduleJob(rule, async () => {
     const groupId = 167619;
     const botName = "DevKor";
     const [newsUrl, newsTitle] = await getNews();
@@ -36,3 +36,4 @@ schedule.scheduleJob(rule, async () => {
       };
       sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
 })
+
