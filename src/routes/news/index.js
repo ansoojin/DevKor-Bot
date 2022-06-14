@@ -21,7 +21,7 @@ router.post('/', async (res) => {
     const needToSummon = isPushEvent && hasKeyword && isManager;
 
       if (needToSummon) {
-          console.log(await getNews());
+          const [newsUrl, newsTitle] = await getNews();
           const body = {
             blocks: [
               {
@@ -29,10 +29,14 @@ router.post('/', async (res) => {
                 value: '🔥오늘의 Tech News🔥',
               },
               ],
+              webPage: {
+                  url: newsUrl,
+                  title: newsTitle,
+              },
             options: ['actAsManager'],
           };
         
-          sendMessage(sender.ANNOUNCEMENTS, undefined, 'announce', { botName: botName, managerIds: managerId }, body, 'post');
+          sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
     }
   } catch (err) {
     console.log(err);
