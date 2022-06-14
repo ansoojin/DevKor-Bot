@@ -21,7 +21,7 @@ router.post('/', async (res) => {
     const needToSummon = isPushEvent && hasKeyword && isManager;
 
       if (needToSummon) {
-          const [newsUrl, newsTitle] = getNews();
+          console.log(getNews());
           const body = {
             blocks: [
               {
