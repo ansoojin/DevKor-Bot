@@ -21,14 +21,14 @@ router.post('/', async (res) => {
     const needToSummon = isPushEvent && hasKeyword && isManager;
 
       if (needToSummon) {
-          console.log(getNews());
+          console.log(await getNews());
           const body = {
             blocks: [
               {
                 type: 'text',
                 value: '🔥오늘의 Tech News🔥',
               },
-            ],
+              ],
             options: ['actAsManager'],
           };
         
