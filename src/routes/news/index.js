@@ -1,4 +1,8 @@
 import express from 'express';
+import { getNews } from './scraping.js';
+import { sender } from '../../constants/sender.js';
+import { sendMessage } from '../../lib/sendMessage.js';
+
 
 const router = express.Router();
 const botName = 'DevKor';
@@ -17,7 +21,18 @@ router.post('/', async (res) => {
     const needToSummon = isPushEvent && hasKeyword && isManager;
 
       if (needToSummon) {
-          console.log("NEWS WEBHOOK");
+          const [newsUrl, newsTitle] = getNews();
+          const body = {
+            blocks: [
+              {
+                type: 'text',
+                value: '🔥오늘의 Tech News🔥',
+              },
+            ],
+            options: ['actAsManager'],
+          };
+        
+          sendMessage(sender.ANNOUNCEMENTS, undefined, 'announce', { botName: botName, managerIds: managerId }, body, 'post');
     }
   } catch (err) {
     console.log(err);
