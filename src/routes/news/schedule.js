@@ -7,7 +7,7 @@ const rule = new schedule.RecurrenceRule();
 
 rule.dayOfWeek = [new schedule.Range(1, 6)];
 rule.hour = 4;
-rule.minute = 35;
+rule.minute = 37;
 rule.tz = 'Asia/Seoul'
 
 export const newsScheduler = schedule.scheduleJob(rule, async () => {
