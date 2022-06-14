@@ -29,12 +29,14 @@ router.post('/', async (res) => {
                 value: '🔥오늘의 Tech News🔥',
               },
               ],
-              webPage: {
-                  url: newsUrl,
-                  title: newsTitle,
-              },
+            //   webPage: {
+            //       url: newsUrl,
+            //       title: newsTitle,
+            //   },
             options: ['actAsManager'],
           };
+          console.log(newsUrl);
+          console.log(newsTitle);
         
           sendMessage(sender.GROUP, groupId, 'messages', { botName: botName }, body, 'post');
     }
