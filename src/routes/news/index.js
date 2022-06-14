@@ -28,11 +28,18 @@ router.post('/', async (res) => {
                 type: 'text',
                 value: '🔥오늘의 Tech News🔥',
               },
+              {
+                  type: 'text',
+                  value: `<link type="url" value="${newsUrl}">${newsTitle}</link>`   
+              },  
               ],
-            //   webPage: {
-            //       url: newsUrl,
-            //       title: newsTitle,
-            //   },
+              buttons: [
+                {
+                  title: "바로가기",
+                  colorVariant: "purple",
+                  url: newsUrl,
+                },
+              ],
             options: ['actAsManager'],
           };
           console.log(newsUrl);
