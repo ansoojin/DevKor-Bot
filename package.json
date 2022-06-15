@@ -19,11 +19,15 @@
   },
   "homepage": "https://github.com/aiccuracy/devkor-channel#readme",
   "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.11",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "heroku-dotenv": "^0.4.1",
     "node-fetch": "^3.2.5",
+    "node-schedule": "^2.1.0",
     "nodemon": "^2.0.16",
+    "python-shell": "^3.0.1",
     "shelljs": "^0.8.5"
   }
 }
