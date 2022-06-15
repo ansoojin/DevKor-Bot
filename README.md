@@ -65,4 +65,45 @@ Keyword : `/뉴스`
 바로가기 버튼을 클릭하면 해당 뉴스기사로 바로 이동합니다.
 ***
 
+# How to Run?
+```
+npm start
+```
+
+# Structure
+
+```
+.
+├── docs
+├── src
+│   ├── config
+│   │   └── auth.js
+│   ├── constants
+│   │   ├── sender.js
+│   │   └── url.js
+│   ├── lib
+│   │   ├── checkText.js
+│   │   ├── fetch.js
+│   │   ├── getRandomNum.js
+│   │   ├── selectRandomMem.js
+│   │   ├── sendMessage.js
+│   │   └── utils.js
+│   ├── routes
+│       ├── news
+│       │   ├── index.js
+│       │   ├── schedule.js
+│       │   └── scraping.js
+│       ├── select
+│       │   ├── index.js
+│       │   └── select.js
+│       ├── stop
+│           ├── index.js
+│           └── stop.js
+├── server.js
+├── README.md
+├── package.json
+├── package-lock.json
+└── .env
+
+```
 
