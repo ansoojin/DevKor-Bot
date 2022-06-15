@@ -12,7 +12,7 @@ Channel Open Api 와 Webhook을 사용하여 TeamChat에서 유용하게 사용�
 🎉 그래서 준비했습니다! 메세지창에 원하는 인원수를 입력하면 DevKor 봇이 친절히 골라줄 것입니다!
 ```
 <b>Keyword</b> : "명"  
-"명"이 포함된 메세지를 TeamChat의 채널에 입력하면, 해당 Group 내에서 입력한 명수만큼 랜덤으로 골라줍니다.
+"명"이 포함된 메세지를 TeamChat의 채널에 입력하면, 해당 Group 내에서 입력한 명수만큼 중복없이 랜덤으로 골라줍니다.
 
 
 ### Examples
@@ -30,8 +30,11 @@ Channel Open Api 와 Webhook을 사용하여 TeamChat에서 유용하게 사용�
 <br />
 ![randomSelect4](docs/randomSelect4.png)
 소수점을 입력한 경우, 올림을 하고 마지막 인원에 대해서는 이름의 절반만 보여줍니다.
+<br />
+<br />
+![randomSelect5](docs/randomSelect5.png)  
+해당 GroupChat의 인원수보다 많은 수를 입력하면, 에러 메세지를 띄워줍니다.
 
-** 이 밖에도 중복 제거, 고를 수 있는 최대 인원수를 그룹 인원 수로 제한 등의 예외 처리를 하였습니다!
 ***
 ## Stop 기능 
 ```
@@ -61,4 +64,5 @@ Keyword : "/뉴스"
 ![news](docs/news.png)
 바로가기 버튼을 클릭하면 해당 뉴스기사로 바로 이동합니다.
 ***
+
 
