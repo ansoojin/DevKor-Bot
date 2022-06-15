@@ -1,11 +1,11 @@
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
-const baseUrl = 'https://www.bbc.com/';
+const baseUrl = 'https://www.bbc.com';
 
 const getHtml = async () => {
     try {
-        const tech = 'news/technology';
+        const tech = '/news/technology';
         const searchUrl = baseUrl + tech;
         return await axios.get(searchUrl);
     } catch (err) {
